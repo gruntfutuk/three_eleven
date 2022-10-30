@@ -17,6 +17,7 @@ def hash_password(password):
     if is_hashlike(password):  # don't rehash likely hashed password
         return password
     hashed = hashlib.sha256(password.encode())
+    logging.info(f"\n\thashed {password}\n\tto     {hashed.hexdigest()}")
     return hashed.hexdigest()
 
 def check_password(plain_password, employee_password):
@@ -41,12 +42,16 @@ def generate_password(size=16):
         password = password[:size]
     else:
         password.extend([choice(ascii_letters) for _ in range(size - len(password))])
-    logging.info(f'password generated: {"".join(password)}')
+    logging.info(f'\n\tpassword generated: {"".join(password)}')
     return ''.join(password[:size])
 
 
 
-logging.basicConfig(filename='password_func.log', filemode='w', level=logging.INFO)
+logging.basicConfig(filename='password_func.log', filemode='a',
+                    format='%(asctime)s - %(message)s',
+                    level=logging.INFO)
+
+logging.info('imported/run')
 
 DEFAULT_PASSWORD = 'password'
 BAD_PASSWORDS = (DEFAULT_PASSWORD, "", 'Password', 'Passw0rd',
