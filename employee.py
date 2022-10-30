@@ -98,7 +98,7 @@ if employees:
 # lets try to add some additional employees
 new_emps = (Employee('Fred', "Bloggs", "William", "S5", 23_000, "Junior Chef"),
             Employee('Barry', "Smoth", "", "S6", 18_000, "Washer"),
-            Employee('Alpha', "Beta", "Charlie", "S2", 43_000, "CFO", generate_password()
+            Employee('Alpha', "Beta", "Charlie", "S2", 43_000, "CFO", generate_password()),
             )
 
 for employee in new_emps:
